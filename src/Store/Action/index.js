@@ -1,6 +1,6 @@
 import * as types from '../Util'
 
-import { getMusicUrl, getMusicLyric, getSingerInfo, getAlbumInfo, getMusicDetail, getMusicListDetail } from '../api';
+import { getMusicUrl, getMusicLyric, getSingerInfo, getAlbumInfo, getMusicDetail, getMusicListDetail } from '../../Api';
 import { findIndex} from '../../Config/util';
 
 import { PLAY_MODE } from '../../Config/config';
@@ -20,7 +20,7 @@ export const getChangeCurrentMusicListAction = (value) => ({
     value
 });
 
-export const getMusicDetailAction = (id) => {
+export const getMusicListDetailAction = (id) => {
     return (dispatch) => {
         dispatch(getChangeShowLoadingAction(true));
         getMusicListDetail(id).then(({data}) => {
@@ -263,24 +263,9 @@ export const playPrevMusicAction = () => {
   /**
    * 实现喜欢歌曲的功能
    */
-//   export const getAddToLikeListAction = (value) => {
-//     return (dispatch, getState) => {
-//       let collector = null;
-//       $db.find({name: 'collector'}, (err, res) => {
-//         collector = res[0];
-//         const index = findIndex(collector.foundList[0].tracks, value);
-//         if (index < 0) {
-//           collector.foundList[0].tracks.unshift(value);
-//           message.info('已经加入到喜欢的歌曲中');
-//         } else {
-//           collector.foundList[0].tracks.splice(index, 1);
-//         }
-//         $db.update({ name: 'collector' }, collector, () => {
-//           dispatch(getChangeCollectorAction(collector));
-//         });
-//       });
-//     };
-//   };
+  export const getAddToLikeListAction = (value) => {
+    
+  };
   
   /**
    * 收藏 / 取消收藏 歌单

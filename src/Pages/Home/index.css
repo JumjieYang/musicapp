@@ -1,5 +1,4 @@
 .home {
-    margin-top: 2%;
     margin-left: 10%;
     margin-right: 7%;
 }
@@ -7,3 +6,25 @@
     color: rgba(240, 248, 255, 0.836);
     font-size: 30px;
 }
+
+.home .recommend-list{
+    box-sizing: border-box;
+    list-style-type: none;
+    margin-left: 0px;
+}
+
+.home .recommend-list li{
+    position: relative;
+    display: inline-block;
+    width: 20%;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.home .recommend-list .list-name{
+    position: relative;
+    display: block;
+    width: 80%;
+    color: white;
+}
+

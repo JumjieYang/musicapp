@@ -16,7 +16,7 @@ const App = (props) => {
 			<Router>
 				<div className = "App">
 					<Layout style={{ minHeight: "100vh"}}>
-					<Layout.Header style={{position: 'fixed', zIndex:1, width:'100%', height:"50px", backgroundColor:"rgba(26, 25, 25, 0.918)"}} >
+					<Layout.Header style={{position: 'fixed', zIndex:1, width:'100%', height:"50px", backgroundColor:"rgba(26, 25, 25, 1)"}} >
 					<Header/>
 					</Layout.Header>
 					<Layout className="site-layout" >
