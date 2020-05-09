@@ -2,6 +2,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
+[![Join the chat at https://gitter.im/JumjieYang-musicapp/community](https://badges.gitter.im/JumjieYang-musicapp/community.svg)](https://gitter.im/JumjieYang-musicapp/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 In the project directory, you can run:
 
 ### `npm start`
