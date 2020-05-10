@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { Layout, Menu } from 'antd';
-import {HomeOutlined, UserOutlined, HeartOutlined, SearchOutlined, InfoCircleOutlined, LoginOutlined} from '@ant-design/icons'
+import {HomeOutlined, UserOutlined, HeartOutlined, SearchOutlined, InfoCircleOutlined} from '@ant-design/icons'
 import Home from './Pages/Home';
 import About from './Pages/About';
 import Header from './Components/Header';
