@@ -29,7 +29,7 @@ const Home = () => {
             <img className='list-img' src={item.coverImgUrl +imageRatio(70)} alt=""/>
           </div>
           <div className='shadow'/>
-          <p className='list-name'>{item.name}</p>
+          <span className='list-name'>{item.name}</span>
         </li>
       )
     })
