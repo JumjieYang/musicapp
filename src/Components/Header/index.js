@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import ReactJkMusicPlayer from 'react-jinke-music-player';
 import './index.css'
 class Header extends Component {
     render () {
@@ -8,6 +9,7 @@ class Header extends Component {
         }
         return (
             <div className="header">
+                <ReactJkMusicPlayer />
             </div>
         )
     }

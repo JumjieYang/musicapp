@@ -4,7 +4,7 @@ const DEFAULT_VOLUME = 0.5;
 
 
 const defaultState= {
-    musicList: null,
+    musicList: [],
     showMusicList:false,
     showMusicDetail:false,
     singerInfo:false,
@@ -30,7 +30,7 @@ const defaultState= {
     playList:[],
     currentIndex: 0,
     playMode: PLAY_MODE.One,
-    favor: null,
+    favor: [],
     showLoading: false,
     volume: DEFAULT_VOLUME
 };
@@ -82,7 +82,7 @@ export default (state = defaultState, action) => {
       }
       if (action.type === types.CHANGE_CURRENT_MUSIC_LYRIC) {
         const newState = deepCopy(state);
-        newState.currentMusicLyric = action.value;
+        newState.musicLyric = action.value;
         return newState;
       }
       if (action.type === types.CHANGE_SINGER_INFO) {

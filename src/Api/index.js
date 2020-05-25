@@ -32,7 +32,7 @@ export const getMusicLyric = (id) => {
 };
 
 export const getSingerInfo = (id) => {
-    const url = NETEASE_HOST + `/artist/?id=${id}`;
+    const url = NETEASE_HOST + `/artists/?id=${id}`;
     return axios.get(url);
 };
 

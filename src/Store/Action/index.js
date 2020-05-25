@@ -2,7 +2,7 @@ import * as types from '../Util'
 
 import { getMusicUrl, getMusicLyric, getSingerInfo, getAlbumInfo, getMusicDetail, getMusicListDetail } from '../../Api';
 import { findIndex} from '../../Config/util';
-
+import store from '../index';
 import { PLAY_MODE } from '../../Config/config';
 import { message } from 'antd';
 
@@ -144,10 +144,11 @@ export const changeCurrentMusicLyric = (lyric) => ({
 
 export const getCurrentMusicLyric = () => {
     return (dispatch, getState) => {
-        const state = JSON.parse(JSON.stringify(getState()));
+        const state = store.getState();
         const currentMusic = state.currentMusic;
+        if (!currentMusic) return;
         const id = currentMusic.id;
-        dispatch(changeCurrentMusicLyric(null));
+        dispatch(changeCurrentMusicLyric());
         getMusicLyric(id).then(({data}) => {
             dispatch(changeCurrentMusicLyric(data));
         });
@@ -157,12 +158,18 @@ export const getCurrentMusicLyric = () => {
 
 export const getChangeCurrentMusic = (music) => {
     return (dispatch, getState) => {
+      let index;
         const state = getState();
-        const list = state.playList;
-        const index = findIndex(list, music);
-        if (index === state.currentIndex){
-            return;
+        let list = state.playList;
+        if (list) {
+        index = findIndex(list, music);
         }
+        else {
+          index = 0;
+        }
+        // if (index === state.currentIndex){
+        //     return;
+        // }
         if (index >= 0 ) {
             dispatch(getChangeCurrentIndex(index));
         } else {
@@ -173,10 +180,10 @@ export const getChangeCurrentMusic = (music) => {
         dispatch(changeCurrentMusicAction(music));
         dispatch(getCurrentMusicLyric());
         getMusicUrl(music.id).then(({data: {data}}) => {
-            if (index !== list.length -1) {
-                dispatch(playNextMusicAction());
-                return;
-            }
+            // if (index !== list.length -1) {
+            //     dispatch(playNextMusicAction());
+            //     return;
+            // }
             music.musicUrl = data[0].url;
             dispatch(changeCurrentMusicAction(music));
             if (!music.imgUrl) {
@@ -217,6 +224,7 @@ export const playPrevMusicAction = () => {
       const state = getState();
       let { currentIndex } = state;
       const { playList } = state;
+      if (!playList) return;
       const length = playList.length;
       if (length === 0 || length === 1) {
         return;
