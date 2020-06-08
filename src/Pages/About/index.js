@@ -33,7 +33,7 @@ const About = () => {
             </p>
             <h1>CopyRight</h1>
             <p>
-                本项目使用 React.js, Electron.js, Redux, Django Framework 进行开发，基于MIT协议开源
+                本项目使用 React.js, Electron.js, Recoil, Django Framework 进行开发，基于MIT协议开源
             </p>
         </div>
     )
