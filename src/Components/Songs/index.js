@@ -1,43 +1,50 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Singers from '../Singers';
 import { useRecoilState } from "recoil";
 import { PlayList } from "../../Store/store";
 import './index.scss';
-import Axios from 'axios';
-import { getSearchResult } from '../../Api/search';
+import { Table } from 'antd';
 
 const Songs = props => {
     const [playList,setPlayList] = useRecoilState(PlayList);
+    const columns = [{
+        title:'ID',
+        dataIndex: 'id',
+        width:30
+    },
+    {
+        title:'Music Name',
+        dataIndex: 'name',
+        width:50
+    },
+    {
+        title:'Singer Name',
+        dataIndex: 'singer',
+        width:50
+    },
+    {
+        title:'Album Name',
+        dataIndex: 'album',
+        width:50
+    },
 
-    const renderMusicList = () => {
+]
+    const musicList = [];
+    const getMusicList = () => {
         return props.list.map((item) => {
-            return (
-                <li key={item.id} className = 'list-li'>
-                    <div className="music-name">
-                        <span
-                        className="highlight"
-                        onClick={() => console.log("highlight music name")}>
-                            {item.musicName}
-                        </span>
-                    </div>
-                    <div className="singer-name">
-                        <Singers singers={item.singers} />
-                    <div className="album-name">
-                        <span className="highlight"
-                        onClick={() => console.log("highlight album name")}>
-                            {item.album.name}
-                        </span>
-                    </div>
-
-                    </div>
-                </li>
-            )
-        })
+            musicList.push({
+                id:item.id,
+                name:item.musicName,
+                singer:item.singers[0].name,
+                album:item.album.name
+            });
+        });
     };
 
     return (
+        getMusicList(),
         <div className="songs-container">
-            <ul>
+            {/* <ul>
                 <li className="title">
                 <div className="music-name">
                 <span>歌曲名</span>
@@ -50,7 +57,24 @@ const Songs = props => {
                 </div>
                 </li>
           {renderMusicList()}
-        </ul>
+        </ul> */}
+        
+        <Table
+        pagination={false}
+        onRow={record => {
+            return {
+                onDoubleClick: () => {
+                    let result = [{
+                        id:record.id,
+                        name:record.name,
+                        singer:record.singer,
+                        album:record.album,
+                        img:'',
+                    }];
+                setPlayList(result);
+                }
+            }
+        }} columns={columns} dataSource={musicList} scroll={{x:599, y: 500}}/>
       </div>
     );
 }

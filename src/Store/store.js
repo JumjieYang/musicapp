@@ -58,22 +58,18 @@ export const musicLyric = atom({
 
 export const playing = atom({
     key: 'playing',
-    default: {
-        playing:false
-    }
+    default: false
 });
 
 export const PlayList = atom({
     key: 'playList',
-    default: {
-        playLists: [{
-            src: 'http://m7.music.126.net/20200614192134/2651308e33a5d972d2f61aa9c820209d/ymusic/0fd6/4f65/43ed/a8772889f38dfcb91c04da915b301617.mp3',
-            artist:'黄家驹',
+    default: [{
+            id:'33894312',
             name:'海阔天空',
+            singer:'黄家驹',
+            album:'',
             img:'',
-            id:'33894312'
         },]
-    }
 });
 
 export const favor = atom ({
