@@ -3,12 +3,9 @@ import React, { useState, useEffect } from 'react';
 import "./index.css";
 import { getRecommendList } from '../../Api';
 import { imageRatio } from '../../Config/util';
-import { useDispatch } from 'react-redux';
-import {getMusicListDetailAction} from '../../Store/Action';
 
 const Home = () => {
   const [recommendList, setRecommendList] = useState([]);
-  const dispatch = useDispatch();
   useEffect( () => {
     const fetchData = async (updateTime = null) => {
       const result = await getRecommendList(updateTime);
@@ -24,7 +21,7 @@ const Home = () => {
       return (
         <li key={item.id}>
           <div className='list-img-container'
-                onClick= {() => dispatch(getMusicListDetailAction(item.id))}>
+                onClick= {() => console.log(item.id)}>
                   <i className='iconfont icon-play'/>
             <img className='list-img' src={item.coverImgUrl +imageRatio(70)} alt=""/>
           </div>

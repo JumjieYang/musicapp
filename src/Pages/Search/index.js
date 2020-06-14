@@ -2,13 +2,7 @@ import React, { useState } from 'react';
 import { getSearchResult } from '../../Api/search';
 import './index.scss';
 import Songs from '../../Components/Songs';
-import {
-    getAlbumInfoAction,
-    getSingerInfoAction,
-    getMusicListDetailAction
-} from '../../Store/Action';
 import { imageRatio, formatDate } from '../../Config/util';
-import { useDispatch } from 'react-redux';
 
 
 
@@ -23,11 +17,10 @@ const SearchClass = (props) => {
     const [searchVal, setSearchVal] = useState('');
     const [result, setResult] = useState({songs:null,albums:null,singers:null,playlist:null});
     const [searchType, setSearchType] = useState('songs');
-    const dispatch=useDispatch();
     const changeSearchType = (type) => {
         if (type === searchType) {
             return;
-        } else if (searchVal === '') {
+        } else {
             setSearchType(type);
             return;
         }
@@ -53,7 +46,6 @@ const SearchClass = (props) => {
     const handleGetAlbums = () => {
         getSearchResult(searchVal,SEARCHTYPES.ALBUMS).then(
             ({ data }) => {
-                console.log("error");
                 const r = JSON.parse(JSON.stringify(result));
                 r.albums = data.result.albums;
                 setResult(r);
@@ -66,7 +58,6 @@ const SearchClass = (props) => {
     const handleGetSingers = () => {
         getSearchResult(searchVal,SEARCHTYPES.SINGERS).then(
         ({data}) => {
-            console.log("succeed");
             const r = JSON.parse(JSON.stringify(result));
             r.singers = data.result.artists;
             setResult(r);
@@ -79,7 +70,6 @@ const SearchClass = (props) => {
     const handleGetPlaylist = () => {
         getSearchResult(searchVal, SEARCHTYPES.PLAYLIST).then(
             ({data}) => {
-                console.log("succeed");
                 const r = JSON.parse(JSON.stringify(result));
                 r.playlist = data.result.playlists;
                 setResult(r);
@@ -131,7 +121,7 @@ const SearchClass = (props) => {
         if (!result.songs) {
             return null;
         } else {
-            return <Songs showTitle={false} list={result.songs} />;
+            return <Songs list={result.songs} />;
         }
     };
 
@@ -146,15 +136,15 @@ const SearchClass = (props) => {
                             <li key={item.id}>
                                 <div
                                 className="album-img"
-                                onClick={() => dispatch(getAlbumInfoAction(item.id))}>
+                                onClick={() => console.log(item.id)}>
                                     <img src={item.picUrl + imageRatio(20)} alt="album-img"/>
                                 </div>
                                 <div className="album-name"
-                                    onClick={() => dispatch(getAlbumInfoAction(item.id))}>
+                                    onClick={() => console.log(item.id)}>
                                         <p>{item.name}</p>
                                 </div>
                                 <div className="singer-name"
-                                    onClick={() => dispatch(getSingerInfoAction(item.artist.id))}>
+                                    onClick={() => console.log(item.artist.id)}>
                                         <p>{item.artist.name}</p>
                                 </div>
                                 <div className="publish-time">
@@ -176,7 +166,7 @@ const SearchClass = (props) => {
                 <ul className="result-singers">
                     {result.singers.map((item) => {
                         return (
-                            <li key={item.id} onClick = {() => dispatch(getSingerInfoAction(item.id))}>
+                            <li key={item.id} onClick = {() => console.log(item.id)}>
                                 <div className="img-container">
                                     <img src={item.img1v1Url+imageRatio(60)} alt="" />
                                 </div>
@@ -199,7 +189,7 @@ const SearchClass = (props) => {
                 <ul className="result-playlist">
                     {result.playlist.map((item) => {
                         return (
-                            <li key={item.id} onClick={() => dispatch(getMusicListDetailAction(item.id))}>
+                            <li key={item.id} onClick={() => console.log(item.id)}>
                                 <div className="img-container">
                                     <img src={item.coverImgUrl + imageRatio(100)} alt=""/>
                                 </div>

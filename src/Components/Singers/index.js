@@ -1,15 +1,12 @@
 import React, { Fragment } from 'react';
-import { getSingerInfoAction} from "../../Store/Action";
-import { useDispatch } from 'react-redux';
 const Singers = props => {
-    const dispatch = useDispatch();
     const renderSingers = () => {
         return props.singers.map((item, index) => {
             if (index !== props.singers.length-1) {
                 return (
                     <span key={index}>
                         <span className="highlight"
-                            onClick={() => dispatch(getSingerInfoAction(item.id))}>
+                            onClick={() => console.log(item.id)}>
                             {item.name}
                         </span>{' '}
                         /{' '}
@@ -17,7 +14,7 @@ const Singers = props => {
                 );
             } else {
                 return (
-                    <span className="highlight" key={index} onClick={() => dispatch(getSingerInfoAction(item.id))}>
+                    <span className="highlight" key={index} onClick={() => console.log(item.id)}>
                         {item.name}
                     </span>
                 );

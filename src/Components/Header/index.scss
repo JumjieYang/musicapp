@@ -1,0 +1,35 @@
+.header-container{
+    
+    .player-control {
+        max-height: 50px;
+        display: inline;
+        clear: none;
+        .prev-button,
+        .next-button,
+        .play-button,
+        .pause-button{
+            margin-left: 15px;
+        }
+    }
+    .player-info {
+        display: inline;
+
+        .music-img{
+            margin-left: 150px;
+            display: inline;
+        }
+        .music-name{
+            margin-left: 100px;
+            color: white;
+            display: inline;
+            font-size: large;
+
+        }
+        .music-artist{
+            margin-left: 30px;
+            color: white;
+            display: inline;
+            font-size: small;
+        }
+    }
+}

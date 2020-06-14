@@ -26,5 +26,6 @@
     display: block;
     width: 80%;
     color: white;
+    white-space:nowrap;
 }
 

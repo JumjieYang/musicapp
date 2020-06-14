@@ -5,7 +5,6 @@
       list-style-type: none;
   
       .title {
-        background: #141411;
         border: none;
   
         span {
@@ -24,7 +23,22 @@
           border: none;
         }
       }
-  
+      .title{
+        .music-name {
+          width: 50%;
+        }
+    
+        .singer-name {
+          width: 100px;
+          color: gray;
+        }
+    
+        .album-name {
+          width: 20%;
+          padding-right: 150px;
+          color: gray;
+        }
+      }
       .list-li {
         .highlight {
           cursor: pointer;
@@ -47,27 +61,24 @@
       .singer-name,
       .album-name {
         display: inline-block;
-        padding-left: 20px;
         line-height: 18px;
         // box-sizing: border-box;
         
-        text-overflow:ellipsis;//让超出的用...实现
         white-space:nowrap;//禁止换行
         overflow:hidden;//超出的隐藏
       }
   
       .music-name {
-        width: 32%;
+        width: 50%;
       }
   
       .singer-name {
-        width: 28%;
+        width: 61%;
         color: gray;
       }
   
       .album-name {
-        width: 32%;
-        padding-right: 10px;
+        margin-left: 230px;
         color: gray;
       }
   

@@ -7,6 +7,6 @@ export const getHotSearch = () => {
 };
 
 export const getSearchResult = (searchName, type) => {
-    const url = NETEASE_HOST + `/search?keywords=${searchName}&type=${type}&limit=80`;
+    const url = NETEASE_HOST + `/search?keywords=${searchName}&type=${type}&limit=30`;
     return axios.get(url);
 };

@@ -1,31 +1,22 @@
-import React from 'react';
-import {If, Then, ELse} from 'react-if';
-import {
-    getChangeCurrentMusic,
-    getAlbumInfoAction,
-    getAddToLikeListAction
-} from '../../Store/Action';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useState } from 'react';
 import Singers from '../Singers';
+import { useRecoilState } from "recoil";
+import { PlayList } from "../../Store/store";
 import './index.scss';
+import Axios from 'axios';
+import { getSearchResult } from '../../Api/search';
 
 const Songs = props => {
-    const playList = useSelector(store => store.playList);
-    const dispatch = useDispatch();
+    const [playList,setPlayList] = useRecoilState(PlayList);
 
     const renderMusicList = () => {
-        return props.list.map((item, index) => {
-            let count = index +1;
-            if (count < 10) {
-                count = '0' + count;
-            };
+        return props.list.map((item) => {
             return (
                 <li key={item.id} className = 'list-li'>
-                    <div className="count">{count}</div>
                     <div className="music-name">
                         <span
                         className="highlight"
-                        onClick={() => dispatch(getChangeCurrentMusic(item))}>
+                        onClick={() => console.log("highlight music name")}>
                             {item.musicName}
                         </span>
                     </div>
@@ -33,13 +24,11 @@ const Songs = props => {
                         <Singers singers={item.singers} />
                     <div className="album-name">
                         <span className="highlight"
-                        onClick={() => dispatch(getAlbumInfoAction(item.album.id))}>
+                        onClick={() => console.log("highlight album name")}>
                             {item.album.name}
                         </span>
                     </div>
-                    {/* <div className="control-btn">
-                        <If condition={findIndex()}
-                    </div> */}
+
                     </div>
                 </li>
             )
@@ -49,9 +38,7 @@ const Songs = props => {
     return (
         <div className="songs-container">
             <ul>
-                <If condition={props.showTitle}>
-                    <li className="title">
-                <div className="count" />
+                <li className="title">
                 <div className="music-name">
                 <span>歌曲名</span>
                 </div>
@@ -62,7 +49,6 @@ const Songs = props => {
                 <span>专辑</span>
                 </div>
                 </li>
-          </If>
           {renderMusicList()}
         </ul>
       </div>
