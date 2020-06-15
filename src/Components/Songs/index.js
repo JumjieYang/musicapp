@@ -7,11 +7,7 @@ import { Table } from 'antd';
 
 const Songs = props => {
     const [playList,setPlayList] = useRecoilState(PlayList);
-    const columns = [{
-        title:'ID',
-        dataIndex: 'id',
-        width:30
-    },
+    const columns = [
     {
         title:'Music Name',
         dataIndex: 'name',
@@ -61,8 +57,10 @@ const Songs = props => {
         
         <Table
         pagination={false}
+        rowKey = {record => record.id}
         onRow={record => {
             return {
+                
                 onDoubleClick: () => {
                     let result = [{
                         id:record.id,
@@ -74,7 +72,7 @@ const Songs = props => {
                 setPlayList(result);
                 }
             }
-        }} columns={columns} dataSource={musicList} scroll={{x:599, y: 500}}/>
+        }} style={{background: "black"}} columns={columns} dataSource={musicList} scroll={{x:599, y: 450}}/>
       </div>
     );
 }

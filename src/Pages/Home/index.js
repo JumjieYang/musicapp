@@ -23,7 +23,7 @@ const Home = () => {
           <div className='list-img-container'
                 onClick= {() => console.log(item.id)}>
                   <i className='iconfont icon-play'/>
-            <img className='list-img' src={item.coverImgUrl +imageRatio(70)} alt=""/>
+            <img className='list-img' src={item.coverImgUrl +imageRatio(100)} alt=""/>
           </div>
           <div className='shadow'/>
           <span className='list-name'>{item.name}</span>

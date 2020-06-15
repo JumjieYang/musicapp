@@ -79,7 +79,7 @@
   
       .album-name {
         margin-left: 230px;
-        color: gray;
+        color: white;
       }
   
       .control-btn {
@@ -113,4 +113,11 @@
         }
       }
     }
+  }
+
+  .ant-table-cell{
+      color: white;
+  }
+  .ant-table-container{
+    background-color: #272626f6;
   }

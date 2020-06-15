@@ -26,7 +26,7 @@ const App = (props) => {
 						height:'100vh',
 						position:'fixed',
 						left:0,
-						paddingTop:"50px",
+						paddingTop:"60px",
 						backgroundColor:"rgba(26, 25, 25, 0.918)"
 					}}
 					collapsedWidth={60}
