@@ -65,8 +65,8 @@ export const PlayList = atom({
     key: 'playList',
     default: [{
             id:'33894312',
-            name:'海阔天空',
-            singer:'黄家驹',
+            name:'情非得已',
+            singer:'Unkown',
             album:'',
             img:'',
         },]
