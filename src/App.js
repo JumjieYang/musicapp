@@ -2,9 +2,8 @@ import React from 'react';
 
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { Layout, Menu } from 'antd';
-import {HomeOutlined, UserOutlined, HeartOutlined, SearchOutlined, InfoCircleOutlined} from '@ant-design/icons'
+import {HomeOutlined, UserOutlined, HeartOutlined, SearchOutlined} from '@ant-design/icons'
 import Home from './Pages/Home';
-import About from './Pages/About';
 import Header from './Components/Header';
 import "./App.css"
 import SearchClass from './Pages/Search';
@@ -58,18 +57,18 @@ const App = (props) => {
 					</Link>
 					收藏
 				</Menu.Item>
-				<Menu.Item key="5">
+				{/* <Menu.Item key="5">
 					<Link to="/about">
 					<InfoCircleOutlined />
 					</Link>
 					关于
-				</Menu.Item>
+				</Menu.Item> */}
 			</Menu>
 					</Layout.Sider>
 					<Layout.Content style={{paddingTop:"50px", backgroundColor:"rgba(26, 25, 25, 0.918)"}}>
 					<div className="app-background">
 						<Route exact path="/" component={Home}/>
-						<Route path="/about" component={About}/>
+						{/* <Route path="/about" component={About}/> */}
 						<Route path="/search" component={SearchClass}/>
 						<Route path="/auth" component={Auth}/>
 						<Route path="/like" component={Like}/>

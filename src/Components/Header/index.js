@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './index.scss'
 import { useRecoilState } from 'recoil';
 import { PlayList } from '../../Store/store';
@@ -7,13 +7,6 @@ import { PlayCircleOutlined, PauseCircleOutlined, LeftOutlined, RightOutlined } 
 const Header = () => {
 
     const [playList,setPlayList] = useRecoilState(PlayList);
-    // const audio = new Audio(`https://music.163.com/song/media/outer/url?id=${playList[0].id}.mp3`);
-    // const start = () => {
-    //     audio.play();
-    // }
-    // const stop = () => {
-    //     audio.pause();
-    // }
     return (
         <div className="header-container">
         <div className="player-control">
